@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+// Probably contains a bug
 int main()
 {
     int *a = (int *)malloc(sizeof(int));
