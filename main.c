@@ -1,6 +1,5 @@
 #include <pthread.h>
 #include <assert.h>
-#include <src/utils.h>
 
 int a, b;
 void __VERIFIER_atomic_acquire(void)
