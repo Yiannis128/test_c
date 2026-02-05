@@ -1,11 +1,26 @@
-#include <stdlib.h>
+#include <pthread.h>
+#include <assert.h>
+#include <src/utils.h>
 
+int a, b;
+void __VERIFIER_atomic_acquire(void)
+{
+    __VERIFIER_assume(a == 0);
+    a = 1;
+}
+void *c(void *arg)
+{
+    ;
+    __VERIFIER_atomic_acquire();
+    b = 1;
+    return NULL;
+}
+pthread_t d;
 int main()
 {
-    int *a = (int *)malloc(sizeof(int));
-    if (a != NULL)
-        return 0;
-    
-    free(a);
+    pthread_create(&d, 0, c, 0);
+    __VERIFIER_atomic_acquire();
+    if (!b)
+        assert(0);
     return 0;
 }
